@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Auto Participate in Giveaway with Notification
 // @namespace    http://tampermonkey.net/
-// @version      1.4
+// @version      1.3
 // @description  Tự động tham gia giveaway trên CelebJihad nếu chưa tham gia và hiển thị thông báo khi thành công
 // @match        https://celebjihad.live/*
 // @grant        none
