@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Auto Participate in Giveaway with Notification
 // @namespace    http://tampermonkey.net/
-// @version      1.3
+// @version      1.4
 // @description  Tự động tham gia giveaway trên CelebJihad nếu chưa tham gia và hiển thị thông báo khi thành công
 // @match        https://celebjihad.live/*
 // @grant        none
@@ -9,8 +9,6 @@
 
 (function() {
     'use strict';
-
-    let hasJoined = false;  // Cờ kiểm tra đã tham gia trong phiên hiện tại
 
     // Hàm hiển thị thông báo
     function showNotification(message) {
@@ -27,7 +25,6 @@
         notification.style.zIndex = '1000';
         document.body.appendChild(notification);
 
-        // Tự động xóa thông báo sau 2 giây
         setTimeout(() => {
             notification.remove();
         }, 2000);
@@ -43,7 +40,7 @@
     function openGiveawaySection() {
         const openButton = document.querySelector('.lottery .a11y-button.lottery-title-wrapper');
         if (openButton && !document.querySelector('.btn-auth-banner')) {
-            openButton.click();  // Nhấp để mở phần giveaway
+            openButton.click();
             console.log("Đã mở phần giveaway.");
         }
     }
@@ -51,25 +48,20 @@
     // Hàm nhấp vào nút "Participate in Giveaway" nếu chưa tham gia
     function clickParticipateButton() {
         const participateButton = document.querySelector('.btn-auth-banner');
-        if (participateButton) {
+        if (participateButton && !hasEnteredGiveaway()) {
             participateButton.click();
             console.log("Đã tham gia giveaway!");
-            hasJoined = true; // Đánh dấu đã tham gia thành công
             showNotification("Bạn đã tham gia thành công giveaway!");  // Hiển thị thông báo thành công
-        } else {
-            console.log("Nút tham gia chưa xuất hiện hoặc đã tham gia.");
         }
     }
 
     // Kiểm tra và thực thi các bước mở và tham gia giveaway nếu chưa tham gia
     setInterval(() => {
-        if (!hasEnteredGiveaway() && !hasJoined) {  // Chỉ mở và tham gia nếu chưa tham gia
+        if (!hasEnteredGiveaway()) {  // Chỉ mở và tham gia nếu chưa tham gia
             openGiveawaySection();    // Mở phần giveaway nếu cần
             clickParticipateButton(); // Thử tham gia giveaway
-        } else if (hasJoined) {
-            console.log("Bạn đã tham gia thành công và sẽ không tham gia lại trong phiên này.");
         } else {
-            console.log("Đã tham gia trước đó.");
+            console.log("Đã tham gia trước đó, không cần tham gia lại.");
         }
     }, 5000);
 })();
