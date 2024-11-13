@@ -4,6 +4,7 @@
 // @version      1.4
 // @description  Tự động tham gia giveaway trên CelebJihad nếu chưa tham gia và hiển thị thông báo khi thành công
 // @match        https://celebjihad.live/*
+// @icon         https://www.google.com/s2/favicons?sz=64&domain=https://celebjihad.live
 // @grant        none
 // ==/UserScript==
 
