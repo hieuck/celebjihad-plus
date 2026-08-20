@@ -1,10 +1,12 @@
 // ==UserScript==
 // @name         CelebJihad Free Token Giveaway Helper
 // @namespace    https://github.com/hieuck/celebjihad-plus
-// @version      2.0.0
+// @version      2.0.1
 // @description  Join the official free-token giveaway once and report confirmed status.
 // @match        https://celebjihad.live/*
 // @match        https://*.celebjihad.live/*
+// @updateURL    https://raw.githubusercontent.com/hieuck/celebjihad-plus/main/celebjihad-plus.js
+// @downloadURL  https://raw.githubusercontent.com/hieuck/celebjihad-plus/main/celebjihad-plus.js
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=celebjihad.live
 // @grant        none
 // ==/UserScript==
